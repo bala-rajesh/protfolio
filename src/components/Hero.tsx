@@ -11,7 +11,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ item, onMoreInfo, onPlay, profileName }) => {
     return (
-        <div className="relative h-[95vh] w-full text-white overflow-hidden group">
+        <div className="relative h-[min(95vh,720px)] w-full text-white overflow-hidden group">
             <div className="absolute inset-0">
                 <img
                     src={item.image}

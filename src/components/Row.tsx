@@ -23,7 +23,7 @@ export const Row: React.FC<RowProps> = ({ title, items, onSelect, isFirst }) => 
 
     return (
         <div
-            className={`relative group z-30 transition-all duration-300 ${isFirst ? '-mt-16 md:-mt-16 landscape-sm:-mt-2 pb-12' : 'mb-8'}`}
+            className={`relative group z-30 transition-all duration-300 ${isFirst ? '-mt-8 md:-mt-8 landscape-sm:-mt-2 pb-12' : 'mb-8'}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
