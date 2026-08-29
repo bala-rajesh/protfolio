@@ -1,126 +1,116 @@
-import type { Item, Section } from './types';
+import type { PortfolioData } from './types';
+import profileImg from './assets/profile.jpg';
 
-export const PORTFOLIO_DATA: { sections: Section[], hero: Item } = {
+export const personalLinks = {
+    github: 'https://github.com/bala-rajesh',
+    linkedin: 'https://www.linkedin.com/in/kunapareddy-bala-rajesh-137a21214',
+    email: 'mailto:kunapareddybalarajesh@gmail.com',
+    resume: 'https://drive.google.com/file/d/1nJXK7DR9FKVsuosfRhbVDYhErTLZaf1h/view?usp=sharing',
+};
+
+export const projectLinks = {
+    chitrakar: {
+        liveUrl: 'https://chitrakar-app.vercel.app/',
+        githubUrl: 'https://github.com/bala-rajesh/ChitraKara',
+    },
+    alzheimerParkinson: {
+        liveUrl: 'https://alzhiemerparkinson.vercel.app/',
+        githubUrl: 'https://github.com/bala-rajesh/Alzheimer-and-Parkinson-Prediction',
+    },
+};
+
+export const experienceLinks = {
+    infosys: 'https://www.infosys.com/',
+};
+
+export const certificateLinks = {
+    infosys: 'https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_01452057076441088015/9bd95189-aa0c-4dcc-a8da-6fc86007b284.pdf',
+    geeksForGeeks: 'https://media.geeksforgeeks.org/certificates/1751870662/a5c1365ea1eceae47f8d55c5f0a71cba.pdf',
+};
+
+const images = {
+    code: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1400&auto=format&fit=crop',
+    research: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop',
+    art: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop',
+    office: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
+    team: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop',
+    java: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=1000&auto=format&fit=crop',
+    react: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop',
+    python: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1000&auto=format&fit=crop',
+    campus: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop',
+    books: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1000&auto=format&fit=crop',
+};
+
+export const PORTFOLIO_DATA: PortfolioData = {
     hero: {
-        id: 'hero-1',
-        title: 'Kunapareddy Bala Rajesh',
-        subtitle: 'Java Full Stack Developer',
-        description: 'Seeking a challenging position to leverage expertise in Java, Data Structures, Algorithms, and MERN Stack Development. Passionate about AI, Scalable Systems, and healthcare technology.',
-        longDescription: 'A dedicated developer with a strong foundation in Java Full Stack development. Currently aiming to contribute to innovative projects at the intersection of Artificial Intelligence and Scalable Systems. Experienced in building robust web applications and content strategy.',
-        image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
-        match: 98,
-        year: '2025',
-        age: '21+',
-        tags: ['Java', 'React', 'AWS', 'Spring Boot'],
-        category: 'experience',
-        link: '#contact'
+        id: 'hero', title: 'The Documentary of Life', subtitle: 'Bala Rajesh',
+        description: 'A developer documenting what I build, learn, research and discover.',
+        longDescription: 'Software Engineer and full-stack developer exploring Java, React, artificial intelligence and the systems that make useful products possible.',
+        image: images.code, year: '2026', season: 'S01', episode: 'E01', tags: ['Java', 'React', 'AI'],
+        category: 'experience', role: 'Software Engineer / Full-Stack Developer',
+        problem: 'How do you turn a collection of work into a story that people can actually enter?',
+        solution: 'A living documentary: projects as episodes, tools as a working archive, and the journey as the through-line.',
+        built: ['Java and Spring Boot foundations', 'React interfaces and full-stack applications', 'Machine learning experiments and research'],
+        challenge: 'Keeping the work honest while making the experience memorable.',
+        learned: 'Good software is part problem-solving, part communication, and part staying curious.',
     },
     sections: [
         {
-            title: 'Trending Projects',
-            items: [
+            title: 'Continue Watching', eyebrow: 'FEATURED WORK', variant: 'poster', items: [
                 {
-                    id: 'p-1',
-                    title: 'Disease Prediction Platform',
-                    subtitle: 'Alzheimer\'s & Parkinson\'s AI',
-                    description: 'AI-powered web app for early detection of diseases through medical image analysis.',
-                    longDescription: 'Developed an AI-powered web application for early detection of Alzheimer\'s and Parkinson\'s diseases through medical image analysis using machine learning models. Features a secure user authentication system (HIPAA-compliant), role-based access control, and a comprehensive dashboard with real-time metrics visualization (model accuracy, processing time).',
-                    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop',
-                    match: 99,
-                    year: '2025',
-                    duration: 'React & Python',
-                    tags: ['React', 'TensorFlow', 'Python', 'Tailwind'],
-                    category: 'project',
-                    tech: [{ name: 'React', color: 'blue' }, { name: 'Node.js', color: 'green' }, { name: 'TensorFlow', color: 'orange' }],
-                    link: '#' // Placeholder link to test 404
+                    id: 'project-disease', title: 'Alzheimer & Parkinson Prediction', subtitle: 'Machine Learning Research',
+                    description: 'An AI-powered web app for exploring early disease detection through medical image analysis.',
+                    longDescription: 'A research-oriented application that brings machine learning models and a web interface together for medical image analysis.',
+                    image: images.research, year: '2025', season: 'S01', episode: 'E01', tags: ['React', 'TensorFlow', 'Python', 'Tailwind'],
+                    tech: [{ name: 'React' }, { name: 'Python' }, { name: 'TensorFlow' }], category: 'project', role: 'Full-stack developer', liveUrl: projectLinks.alzheimerParkinson.liveUrl, githubUrl: projectLinks.alzheimerParkinson.githubUrl,
+                    problem: 'Make an experimental medical-imaging workflow easier to explore from a browser.',
+                    solution: 'Connected a React interface to machine learning workflows and visualized the returned results.',
+                    built: ['React interface', 'Python and TensorFlow model workflow', 'Authentication and role-based access'],
+                    challenge: 'Presenting technical model output in a way that remains understandable.',
+                    learned: 'Research products need careful interfaces as much as they need working models.',
                 },
                 {
-                    id: 'p-2',
-                    title: 'Chitrakar',
-                    subtitle: 'Artist-Customer Platform',
-                    description: 'Full-stack platform connecting artists and customers for custom artwork.',
-                    longDescription: 'A MERN stack architecture application connecting artists and customers. Implemented secure authentication with OTP verification, real-time chat functionality for custom painting requests, and Cloudinary integration for efficient image storage, optimizing performance by 40%.',
-                    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop',
-                    match: 95,
-                    year: '2024',
-                    duration: 'MERN Stack',
-                    tags: ['MongoDB', 'Express', 'React', 'Node'],
-                    category: 'project',
-                    tech: [{ name: 'MongoDB', color: 'green' }, { name: 'Express', color: 'gray' }, { name: 'React', color: 'blue' }],
-                    link: '#'
-                }
-            ]
-        },
-        {
-            title: 'Work Experience',
-            items: [
-                {
-                    id: 'exp-1',
-                    title: 'Infosys',
-                    subtitle: 'Java Full Stack Developer',
-                    description: 'Implemented cloud-based solutions and scalable architecture designs.',
-                    longDescription: 'Remote | Aug 2025 - Present. Completed intensive training in full-stack development and agile methodologies, achieving certification milestones 30% ahead of timeline. Implemented cloud-based solutions using industry-standard platforms, enhancing application performance by 25%.',
-                    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-                    match: 98,
-                    year: '2025',
-                    duration: 'Present',
-                    tags: ['Full Stack', 'Cloud', 'Agile'],
-                    category: 'experience',
-                    link: 'https://www.infosys.com/'
+                    id: 'project-chitrakar', title: 'ChitraKara', subtitle: 'Artist-Customer Platform',
+                    description: 'A full-stack platform connecting artists and customers around custom artwork.',
+                    longDescription: 'A MERN stack application for custom painting requests, with authentication, conversations and image handling.',
+                    image: images.art, year: '2024', season: 'S01', episode: 'E02', tags: ['MongoDB', 'Express', 'React', 'Node'],
+                    tech: [{ name: 'MongoDB' }, { name: 'Express' }, { name: 'React' }, { name: 'Node.js' }], category: 'project', role: 'Full-stack developer', liveUrl: projectLinks.chitrakar.liveUrl, githubUrl: projectLinks.chitrakar.githubUrl,
+                    problem: 'Give artists and customers a clearer way to discuss and manage custom work.',
+                    solution: 'Built a MERN application with OTP authentication, real-time chat and Cloudinary image storage.',
+                    built: ['OTP authentication', 'Real-time chat for painting requests', 'Cloudinary image storage and delivery'],
+                    challenge: 'Balancing the needs of two different user roles in one flow.',
+                    learned: 'The best product decisions often come from mapping the conversation before writing the code.',
                 },
-                {
-                    id: 'exp-2',
-                    title: 'GeeksForGeeks Chapter',
-                    subtitle: 'Content Writer',
-                    description: 'Developed engaging content strategies increasing student engagement by 40%.',
-                    longDescription: 'Srivilliputhur | May 2024 - May 2025. Developed engaging content strategies for college club communications. Implemented collaborative content creation workflows with graphic design teams, enhancing visual storytelling effectiveness by 35%.',
-                    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
-                    match: 90,
-                    year: '2024',
-                    duration: '1 Year',
-                    tags: ['Content', 'Leadership', 'Strategy'],
-                    category: 'experience'
-                },
-                {
-                    id: 'exp-3',
-                    title: 'GeeksForGeeks Chapter',
-                    subtitle: 'Content Writer',
-                    description: 'Developed engaging content strategies increasing student engagement by 40%.',
-                    longDescription: 'Srivilliputhur | May 2024 - May 2025. Developed engaging content strategies for college club communications. Implemented collaborative content creation workflows with graphic design teams, enhancing visual storytelling effectiveness by 35%.',
-                    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
-                    match: 90,
-                    year: '2024',
-                    duration: '1 Year',
-                    tags: ['Content', 'Leadership', 'Strategy'],
-                    category: 'experience'
-                }
-            ]
+            ],
         },
         {
-            title: 'Top Skills',
-            items: [
-                { id: 'sk-1', title: 'Java', description: 'Core Java, OOPs, Spring Framework', image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=2074&auto=format&fit=crop', match: 100, year: 'Pro', tags: ['Backend'], category: 'skill' },
-                { id: 'sk-2', title: 'React.js', description: 'Hooks, Redux, Context API', image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop', match: 98, year: 'Adv', tags: ['Frontend'], category: 'skill' },
-                { id: 'sk-3', title: 'Node.js', description: 'Express, RESTful APIs, Async', image: 'https://images.unsplash.com/photo-1605647540924-852290f6b0d5?q=80&w=2067&auto=format&fit=crop', match: 95, year: 'Adv', tags: ['Backend'], category: 'skill' },
-                { id: 'sk-4', title: 'Python', description: 'Pandas, NumPy, Scikit-learn', image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=2032&auto=format&fit=crop', match: 90, year: 'Int', tags: ['ML', 'Data'], category: 'skill' },
-                { id: 'sk-5', title: 'AWS', description: 'Cloud Infrastructure, Deployment', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop', match: 85, year: 'Int', tags: ['Cloud'], category: 'skill' },
-            ]
+            title: 'Latest Episodes', eyebrow: 'WORK & STUDY', variant: 'landscape', items: [
+                { id: 'experience-infosys', title: 'Infosys', subtitle: 'Java Full Stack Developer', description: 'Training and work across full-stack development, cloud-based solutions and agile methods.', image: images.office, year: '2025 - Present', season: 'S01', episode: 'E03', duration: 'Present', tags: ['Java', 'Full Stack', 'Cloud'], category: 'experience', liveUrl: experienceLinks.infosys, role: 'Java Full Stack Developer', certificateUrl: certificateLinks.infosys },
+                { id: 'experience-gfg', title: 'GeeksForGeeks Chapter', subtitle: 'Content Writer', description: 'Created content and collaborated with design teams for college club communications.', image: images.team, year: '2024 - 2025', season: 'S01', episode: 'E04', tags: ['Writing', 'Content', 'Design'], category: 'experience', role: 'Content Writer', certificateUrl: certificateLinks.geeksForGeeks },
+                { id: 'education', title: 'B.Tech / Computer Science', subtitle: 'Kalasalingam Academy', description: 'Computer Science and Engineering, completed in 2025.', image: images.campus, year: '2025', season: 'S01', episode: 'E05', tags: ['Education', 'Computer Science'], category: 'education' },
+            ],
         },
-        {
-            title: 'Education & Certifications',
-            items: [
-                { id: 'edu-1', title: 'B.Tech', subtitle: 'Kalasalingam Academy', description: 'GPA: 9.03/10.00. Computer Science & Engineering.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop', match: 100, year: '2025', category: 'education', tags: ['Degree'] },
-                { id: 'cert-1', title: 'Java Certified', subtitle: 'University of Helsinki', description: 'Certified in Java Programming.', image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop', match: 95, year: '2024', category: 'certification', tags: ['Cert'] },
-                { id: 'cert-2', title: 'Machine Learning', subtitle: 'Using Python', description: 'Comprehensive ML course completion.', image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop', match: 92, year: '2024', category: 'certification', tags: ['Cert'] },
-            ]
-        },
-        {
-            title: 'Hobbies',
-            items: [
-                { id: 'hobby-1', title: 'Reading', description: 'Reading books and articles.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop', match: 100, year: '2025', category: 'hobby', tags: ['Hobby'] },
-                { id: 'hobby-2', title: 'Gaming', description: 'Playing video games.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop', match: 95, year: '2024', category: 'hobby', tags: ['Hobby'] },
-                { id: 'hobby-3', title: 'Traveling', description: 'Traveling to new places.', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop', match: 92, year: '2024', category: 'hobby', tags: ['Hobby'] },
-            ]
-        }
-    ]
+    ],
+    journey: [
+        { code: 'S01 E01', title: 'The Beginning', description: 'Started coding and exploring software development.' },
+        { code: 'S01 E02', title: 'The Builder', description: 'Started building web applications and learning full-stack development.' },
+        { code: 'S01 E03', title: 'The Researcher', description: 'Explored machine learning and research projects.' },
+        { code: 'S01 E04', title: 'The Engineer', description: 'Deepened work with Java, Spring Boot, data structures and backend development.' },
+        { code: 'S01 E05', title: "What's Next", description: 'Continuing to learn, build and document the next chapter.' },
+    ],
+    toolkit: [
+        { label: 'Backend', items: ['Java', 'Spring Boot', 'JPA', 'Hibernate'] },
+        { label: 'Frontend', items: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind'] },
+        { label: 'Database', items: ['MySQL', 'PostgreSQL', 'MongoDB'] },
+        { label: 'AI / ML', items: ['Python', 'TensorFlow', 'Machine Learning'] },
+        { label: 'Design', items: ['Figma', 'UI/UX'] },
+    ],
+    currentlyBuilding: { title: 'Portfolio v2', status: 'In Progress', description: 'Turning a developer portfolio into a documentary about the work behind it.' },
+    beyondCode: ['Movies', 'Anime', 'Writing', 'Design', 'Reading', 'Technology'],
+    about: {
+        name: 'Bala Rajesh',
+        role: 'Software Engineer / Full-Stack Developer',
+        description: 'A developer exploring Java, React, artificial intelligence and the systems that make useful products possible. This archive brings together the applications, research, writing and learning that shape the work.',
+        image: profileImg,
+    },
 };

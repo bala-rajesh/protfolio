@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import type { Item } from './types';
 import { PORTFOLIO_DATA } from './data';
+import { personalLinks } from './data';
 import { ProfileGate } from './components/ProfileGate';
 import { NotFoundOverlay } from './components/NotFoundOverlay';
 import { Navbar } from './components/Navbar';
@@ -40,7 +41,19 @@ export default function App() {
       setShowNotFound(true);
       return;
     }
+    if (link.startsWith('#')) {
+      document.querySelector(link)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
     window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleProfileSelect = (name: string) => {
+    setCurrentProfile(name);
+    window.setTimeout(() => {
+      const target = name === 'Recruiter' ? '#work' : '#home';
+      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   };
 
   if (showIntro) {
@@ -48,57 +61,57 @@ export default function App() {
   }
 
   if (!currentProfile) {
-    return <ProfileGate onSelect={(name) => setCurrentProfile(name)} />;
+    return <ProfileGate onSelect={handleProfileSelect} />;
   }
 
   return (
-    <div className="bg-[#141414] min-h-screen text-white font-sans overflow-x-hidden selection:bg-red-600 selection:text-white pb-20 scroll-smooth">
+    <div className="app-shell">
       <Navbar scrolled={isScrolled} />
 
       <Hero
         item={PORTFOLIO_DATA.hero}
-        onMoreInfo={setSelectedItem}
+        onMoreInfo={() => handleNavigation('#about')}
         onPlay={handleNavigation}
         profileName={currentProfile || undefined}
       />
 
-      {/* Main Content Rows */}
-      <div className="relative z-20 space-y-4">
+      <main>
+      <div className="rows-wrap">
         {PORTFOLIO_DATA.sections.map((section, idx) => (
           <Row
-            key={idx}
+            key={section.title}
             title={section.title}
+            eyebrow={section.eyebrow}
+            variant={section.variant}
             items={section.items}
             onSelect={setSelectedItem}
             isFirst={idx === 0}
           />
         ))}
       </div>
-
-      {/* Footer */}
-      <div className="max-w-4xl mx-auto mt-20 px-12 text-gray-500 text-sm py-12 opacity-70 hover:opacity-100 transition-opacity duration-500">
-        <div className="flex gap-6 mb-4">
-          <Github className="w-6 h-6 hover:text-white cursor-pointer hover:scale-110 transition-transform" onClick={() => handleNavigation('https://github.com/')} />
-          <Linkedin className="w-6 h-6 hover:text-white cursor-pointer hover:scale-110 transition-transform" onClick={() => handleNavigation('https://linkedin.com/')} />
-          <Mail className="w-6 h-6 hover:text-white cursor-pointer hover:scale-110 transition-transform" onClick={() => handleNavigation('mailto:example@gmail.com')} />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          {['Audio Description', 'Help Centre', 'Gift Cards', 'Media Centre', 'Investor Relations', 'Jobs', 'Terms of Use', 'Privacy'].map((text) => (
-            <button key={text} onClick={() => handleNavigation('#')} className="text-left hover:underline hover:text-gray-400 transition-colors">{text}</button>
-          ))}
-        </div>
-        <button className="border border-gray-500 px-4 py-1 text-gray-500 hover:text-white hover:border-white mb-4 hover:bg-white/5 transition-all active:scale-95">
-          Service Code
-        </button>
-        <p className="text-xs">© 2025 Kunapareddy Bala Rajesh Portfolio</p>
-      </div>
+      <section id="journey" className="story-section journey-section">
+        <div className="section-intro"><p className="kicker">The long take</p><h2>The Journey</h2><p>Every episode changes the questions. The thread is learning by making.</p></div>
+        <div className="journey-list">{PORTFOLIO_DATA.journey.map((episode) => <article className="journey-episode" key={episode.code}><span>{episode.code}</span><div><h3>{episode.title}</h3><p>{episode.description}</p></div></article>)}</div>
+      </section>
+      <section id="about" className="about-section">
+        <div className="about-portrait"><img src={PORTFOLIO_DATA.about.image} alt="Bala Rajesh" loading="lazy" /></div>
+        <div className="section-intro"><p className="kicker">About the subject</p><h2>{PORTFOLIO_DATA.about.name}</h2><p className="about-role">{PORTFOLIO_DATA.about.role}</p><p>{PORTFOLIO_DATA.about.description}</p></div>
+      </section>
+      <section className="archive-section">
+        <div className="section-intro"><p className="kicker">Working archive</p><h2>My Toolkit</h2><p>Tools I use to think, prototype, build and ship.</p></div>
+        <div className="toolkit-grid">{PORTFOLIO_DATA.toolkit.map((group) => <article className="toolkit-group" key={group.label}><h3>{group.label}</h3>{group.items.map((skill) => <span key={skill}>{skill}</span>)}</article>)}</div>
+      </section>
+      <section className="building-section"><div><p className="kicker">Currently building</p><h2>{PORTFOLIO_DATA.currentlyBuilding.title}</h2><p>{PORTFOLIO_DATA.currentlyBuilding.description}</p></div><div className="build-status"><span>{PORTFOLIO_DATA.currentlyBuilding.status}</span><div className="status-line"><i /></div><small>Documentary mode</small></div></section>
+      <section className="beyond-section"><div className="paper-note"><p className="kicker">Bonus footage</p><h2>Beyond the Code</h2><p>A few of the things that keep the frame wide.</p></div><div className="interest-list">{PORTFOLIO_DATA.beyondCode.map((interest) => <span key={interest}>{interest}</span>)}</div></section>
+      <section id="contact" className="contact-section"><div className="section-intro"><p className="kicker">Final frame</p><h2>Stay in touch</h2><p>For work, collaboration or a conversation about the next episode.</p></div><div className="contact-actions"><a className="button button-primary" href={personalLinks.email}><Mail /> Email me</a><a className="button button-ghost" href={personalLinks.github} target="_blank" rel="noopener noreferrer"><Github /> GitHub</a><a className="button button-ghost" href={personalLinks.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin /> LinkedIn</a><a className="button button-ghost" href={personalLinks.resume} target="_blank" rel="noopener noreferrer"><ArrowUpRight /> View resume</a></div></section>
+      </main>
+      <footer className="site-footer"><div><a href="#home" className="footer-brand">BALA RAJESH<span>.</span></a><p>Next episode loading...</p></div><div className="footer-links"><a href="#work">Work <ArrowUpRight /></a><a href="#journey">Journey <ArrowUpRight /></a><a href="#about">About <ArrowUpRight /></a><a href="#contact">Contact <ArrowUpRight /></a></div><div className="footer-social"><a href={personalLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github /></a><a href={personalLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin /></a><a href={personalLinks.email} aria-label="Email Bala Rajesh"><Mail /></a><a href={personalLinks.resume} target="_blank" rel="noopener noreferrer" aria-label="View resume"><ArrowUpRight /></a></div><small>© 2026 Bala Rajesh</small></footer>
 
       {/* Modals & Overlays */}
       {selectedItem && (
         <Modal
           item={selectedItem}
           onClose={() => setSelectedItem(null)}
-          onPlay={handleNavigation}
         />
       )}
 
